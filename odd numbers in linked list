@@ -1,0 +1,46 @@
+# Odd Numbers Using Linked List in DSA
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+void insertNode(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    newNode->next = *head;
+    *head = newNode;
+}
+
+void printOddNumbers(struct Node* head) {
+    struct Node* current = head;
+    while (current != NULL) {
+        if (current->data % 2 != 0) {
+            printf("%d ", current->data);
+        }
+        current = current->next;
+    }
+}
+
+int main() {
+    struct Node* head = NULL;
+    insertNode(&head, 1);
+    insertNode(&head, 2);
+    insertNode(&head, 3);
+    insertNode(&head, 4);
+    insertNode(&head, 5);
+
+    printf("Odd numbers in the linked list: ");
+    printOddNumbers(head);
+
+    return 0;
+}
