@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int countNodes(struct Node* head) {
+    int count = 0;
+    while (head) {
+        count++;
+        head = head->next;
+    }
+    return count;
+}
+
+// Example usage
+int main() {
+    struct Node* head = malloc(sizeof(struct Node));
+    head->data = 1;
+    head->next = malloc(sizeof(struct Node));
+    head->next->data = 2;
+    head->next->next = NULL;
+
+    printf("Count of nodes: %d\n", countNodes(head));
+
+    // Free allocated memory
+    free(head->next);
+    free(head);
+    return 0;
+}
