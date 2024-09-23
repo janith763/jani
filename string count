@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int countChar(const char *str, char ch) {
+    int count = 0;
+    while (*str) {
+        if (*str++ == ch) count++;
+    }
+    return count;
+}
+
+int main() {
+    const char *string = "Data Structures and Algorithms";
+    char character = 'a';
+    printf("Count of '%c': %d\n", character, countChar(string, character));
+    return 0;
+}
